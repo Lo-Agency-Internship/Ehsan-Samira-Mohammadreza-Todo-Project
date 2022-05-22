@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+ <!-- main css -->
+ <link rel="stylesheet" href="styles/main.css">
+
+ 
+ 
+ <!-- font awesome -->
+ <link rel="stylesheet" href="styles/all.css">
+ <title>TODO LIST</title>
+ <style>
+ </style>
+</head>
+
+<body>
+ <div class="container">
+  <div class="row">
+   <div class="col mx-auto col-md-9 mt-3 text-center">
+    <div class="alert feedback">
+     write value for item
+    </div>
+    <!-- form -->
+    <form class="" id="itemForm">
+     <h3 class="todoList mb-4 font">to do list</h3>
+     <div class="flex">
+        <div class=" input-group"> 
+            <div class="input-group-append">
+              <button type="button" class="btn btn-warning " >Daily</button>
+            </div>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-warning  " >Weekly</button>
+            </div>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-warning " >Monthly</button>
+            </div>
+          </div>
+     </div>
+     <div class="flex">
+        <div class="input-group">
+                <input type="text" class="form-control" id="itemInput" placeholder="name...">
+                <input type="date" class="form-control" id="itemtime">
+        </div>
+        <div class="flex margin">
+          <div class="input-group-append">
+            <button class="btn btn-add" type="submit">add item</button>
+            </div>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-clear" id="clear-list">clear items</button>
+          </div>
+        </div>
+            
+    </div>
+    </form>
+    <div class="item-container">
+     <!-- end of form  -->
+     <div class="item-list my-5">
+    
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+
+
+
+
+
+ <!-- script js -->
+ <script src="js/app.js"></script>
+</body>
+
+</html>
