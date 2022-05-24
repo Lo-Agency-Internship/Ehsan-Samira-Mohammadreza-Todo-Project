@@ -11,14 +11,7 @@ form.addEventListener('submit', (event) => {
 
       return false
     }
-
-
-
-
-
-
-
-
+canLogin()
 
 });
 
@@ -31,19 +24,48 @@ function validateForm() {
     return setError(emailInput, 'Provide email address');
 
   } else if (isEmailValid(emailInput.value)) {
-    return setSuccess(emailInput);
+return    setSuccess(emailInput);
   } else {
-     setError(emailInput, 'Provide valid email address');
+  return  setError(emailInput, 'Provide valid email address');
   }
 
   //PASSWORD
   if (passwordInput.value.trim() == '') {
-    return setError(passwordInput, 'Password can not be empty');
+  return  setError(passwordInput, 'Password can not be empty');
   } else if (passwordInput.value.trim().length < 6 || passwordInput.value.trim().length > 20) {
-    return setError(passwordInput, 'Password min 6 max 20 charecters');
+  return  setError(passwordInput, 'Password min 6 max 20 charecters');
   } else {
-    return setSuccess(passwordInput);
+  return  setSuccess(passwordInput);
   }
+
+}
+
+function canLogin() {
+  let users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : []
+
+  users.find(search)
+
+
+}
+
+  function search(item) {
+    let userEmail = emailInput.value.trim()
+    let userPassword = passwordInput.value.trim()
+    if (userEmail ==item.email && userPassword== item.password1) {
+      console.log("im here")
+      location.replace("todo.html")
+      return  setSuccess(passwordInput);
+    return true;
+
+
+  }else {
+    console.log("password wrong")
+    return setError(passwordInput,"Wrong password or email")
+  }
+
+
+  }
+
 
 
   function setError(element, errorMessage) {
@@ -54,6 +76,7 @@ function validateForm() {
     parent.classList.add('error');
     const paragraph = parent.querySelector('p');
     paragraph.textContent = errorMessage;
+    return false
   }
 
   function setSuccess(element) {
@@ -62,6 +85,7 @@ function validateForm() {
       parent.classList.remove('error');
     }
     parent.classList.add('success');
+    return true
   }
 
   function isEmailValid(email) {
@@ -69,4 +93,3 @@ function validateForm() {
 
     return reg.test(email);
   }
-}
