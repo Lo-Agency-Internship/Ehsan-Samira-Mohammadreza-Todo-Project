@@ -4,31 +4,14 @@ const passwordInput = document.querySelector('#password');
 
 form.addEventListener('submit', (event) => {
 
-  validateForm()
-
-  let userInfo = []
-
-  let inputs = {
-
-    id: Date.now(),
-    email: document.querySelector("#email").value,
-    password1: document.querySelector("#password").value,
-  }
-  userInfo.push(inputs)
-
-
-  // Get current counter from LS and increment it
-  let counterLogin = localStorage.getItem('counter Login');
-  counterLogin++;
-
-  // Put names in LS with a new counter id
-  localStorage.setItem('user Login:' + counterLogin, JSON.stringify(userInfo));
-
-  // Put back the incremented counter into LS
-  localStorage.setItem('counter Login', counterLogin);
-
-
   event.preventDefault();
+  let valid = validateForm()
+  console.log(valid)
+    if (!valid) {
+
+      return false
+    }
+
 
 
 
