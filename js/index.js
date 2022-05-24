@@ -28,21 +28,21 @@ function validateForm() {
 
   //EMAIL
   if (emailInput.value.trim() == '') {
-    setError(emailInput, 'Provide email address');
+    return setError(emailInput, 'Provide email address');
 
   } else if (isEmailValid(emailInput.value)) {
-    setSuccess(emailInput);
+    return setSuccess(emailInput);
   } else {
-    setError(emailInput, 'Provide valid email address');
+     setError(emailInput, 'Provide valid email address');
   }
 
   //PASSWORD
   if (passwordInput.value.trim() == '') {
-    setError(passwordInput, 'Password can not be empty');
+    return setError(passwordInput, 'Password can not be empty');
   } else if (passwordInput.value.trim().length < 6 || passwordInput.value.trim().length > 20) {
-    setError(passwordInput, 'Password min 6 max 20 charecters');
+    return setError(passwordInput, 'Password min 6 max 20 charecters');
   } else {
-    setSuccess(passwordInput);
+    return setSuccess(passwordInput);
   }
 
 
