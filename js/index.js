@@ -1,32 +1,26 @@
-const form = document.querySelector('#login-account-form');
-const emailInput = document.querySelector('#email');
-const passwordInput = document.querySelector('#password');
+const form = document.querySelector("#login-account-form");
+const emailInput = document.querySelector("#email");
+const passwordInput = document.querySelector("#password");
 
-form.addEventListener('submit', (event) => {
-
+form.addEventListener("submit", (event) => {
   event.preventDefault();
-  let valid = validateForm()
-  console.log(valid)
-    if (!valid) {
-
-      return false
-    }
-canLogin()
+  let valid = validateForm();
+  console.log(valid);
+  if (!valid) {
+    return false;
+  }
+  canLogin();
 
 });
 
-
-
 function validateForm() {
-
   //EMAIL
-  if (emailInput.value.trim() == '') {
-    return setError(emailInput, 'Provide email address');
-
+  if (emailInput.value.trim() == "") {
+    return setError(emailInput, "Provide email address");
   } else if (isEmailValid(emailInput.value)) {
 return    setSuccess(emailInput);
   } else {
-  return  setError(emailInput, 'Provide valid email address');
+    return setError(emailInput, "Provide valid email address");
   }
 
   //PASSWORD
@@ -38,33 +32,28 @@ return    setSuccess(emailInput);
   return  setSuccess(passwordInput);
   }
 
-}
-
 function canLogin() {
-  let users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : []
+  let users = localStorage.getItem("users")
+    ? JSON.parse(localStorage.getItem("users"))
+    : [];
 
-  users.find(search)
+  users.find(search);
+}
 
+function search(item) {
+  let userEmail = emailInput.value.trim();
+  let userPassword = passwordInput.value.trim();
+  if (userEmail == item.email && userPassword == item.password1) {
+    console.log("im here");
+    location.replace("todo.html");
+    return setSuccess(passwordInput);
+    return true;
+  } else {
+    console.log("password wrong");
+    return setError(passwordInput, "Wrong password or email");
 
 }
 
-  function search(item) {
-    let userEmail = emailInput.value.trim()
-    let userPassword = passwordInput.value.trim()
-    if (userEmail ==item.email && userPassword== item.password1) {
-      console.log("im here")
-      location.replace("todo.html")
-      return  setSuccess(passwordInput);
-    return true;
-
-
-  }else {
-    console.log("password wrong")
-    return setError(passwordInput,"Wrong password or email")
-  }
-
-
-  }
 
 
 
@@ -79,17 +68,22 @@ function canLogin() {
     return false
   }
 
-  function setSuccess(element) {
-    const parent = element.parentElement;
-    if (parent.classList.contains('error')) {
-      parent.classList.remove('error');
-    }
-    parent.classList.add('success');
-    return true
-  }
 
-  function isEmailValid(email) {
-    const reg = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-    return reg.test(email);
+
+function setSuccess(element) {
+  const parent = element.parentElement;
+  if (parent.classList.contains("error")) {
+    parent.classList.remove("error");
   }
+  parent.classList.add("success");
+  return true;
+}
+
+function isEmailValid(email) {
+  const reg =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+  return reg.test(email);
+}
+
