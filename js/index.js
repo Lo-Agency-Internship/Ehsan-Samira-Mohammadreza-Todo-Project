@@ -10,6 +10,7 @@ form.addEventListener("submit", (event) => {
     return false;
   }
   canLogin();
+
 });
 
 function validateForm() {
@@ -17,23 +18,19 @@ function validateForm() {
   if (emailInput.value.trim() == "") {
     return setError(emailInput, "Provide email address");
   } else if (isEmailValid(emailInput.value)) {
-    return setSuccess(emailInput);
+return    setSuccess(emailInput);
   } else {
     return setError(emailInput, "Provide valid email address");
   }
 
   //PASSWORD
-  if (passwordInput.value.trim() == "") {
-    return setError(passwordInput, "Password can not be empty");
-  } else if (
-    passwordInput.value.trim().length < 6 ||
-    passwordInput.value.trim().length > 20
-  ) {
-    return setError(passwordInput, "Password min 6 max 20 charecters");
+  if (passwordInput.value.trim() == '') {
+  return  setError(passwordInput, 'Password can not be empty');
+  } else if (passwordInput.value.trim().length < 6 || passwordInput.value.trim().length > 20) {
+  return  setError(passwordInput, 'Password min 6 max 20 charecters');
   } else {
-    return setSuccess(passwordInput);
+  return  setSuccess(passwordInput);
   }
-}
 
 function canLogin() {
   let users = localStorage.getItem("users")
@@ -54,19 +51,25 @@ function search(item) {
   } else {
     console.log("password wrong");
     return setError(passwordInput, "Wrong password or email");
-  }
+
 }
 
-function setError(element, errorMessage) {
-  const parent = element.parentElement;
-  if (parent.classList.contains("success")) {
-    parent.classList.remove("success");
+
+
+
+  function setError(element, errorMessage) {
+    const parent = element.parentElement;
+    if (parent.classList.contains('success')) {
+      parent.classList.remove('success');
+    }
+    parent.classList.add('error');
+    const paragraph = parent.querySelector('p');
+    paragraph.textContent = errorMessage;
+    return false
   }
-  parent.classList.add("error");
-  const paragraph = parent.querySelector("p");
-  paragraph.textContent = errorMessage;
-  return false;
-}
+
+
+
 
 function setSuccess(element) {
   const parent = element.parentElement;
@@ -83,3 +86,4 @@ function isEmailValid(email) {
 
   return reg.test(email);
 }
+
