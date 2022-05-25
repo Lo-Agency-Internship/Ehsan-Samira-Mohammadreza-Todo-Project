@@ -1,134 +1,202 @@
 //add an eventListener to the from
 const form = document.querySelector('#itemForm'); // select form
-const itemInput = document.querySelector('#itemInput'); // select input box from form
-const itemtimeeee = document.querySelector('#itemtime');
+const itemtaskInput = document.querySelector('#itemInput'); // select input box from form --> task 
+const itemtimeinput = document.querySelector('#itemtime'); // select input box from form --> time 
 const itemList = document.querySelector('.item-list');
-const feedback = document.querySelector('.feedback');
-const clearButton = document.querySelector('#clear-list');
+const feedback = document.querySelector('.feedback'); // a section that has feedback massage
+const clearButton = document.querySelector('#clear-list');//a button that when we click on remove all list 
 
-let todoItems = [];
-let timeItems = [];
-const handleItem = function(itemName){
 
+
+let todo;
+// const handleItem = function(itemName){
+function handleItem(todoitemsssss) {
     const items = itemList.querySelectorAll('.item');
- 
-    items.forEach(function(item){
-        
-        if(item.querySelector('.item-name').textContent === itemName){
-            //complete event listener
-            item.querySelector('.complete-item').addEventListener('click', function(){
+    // console.log (todo);
+
+    items.forEach(function(item) {
+        // if(item.querySelector('.item-name').textContent === todoitemsssss.title)
+        // {
+                item.querySelector('.complete-item').addEventListener('click', function(){
                 item.querySelector('.item-name').classList.toggle('completed');
                 this.classList.toggle('visibility');
+                todoitemsssss.iscm = true
             });
+
+            
             //edit event listener
-            item.querySelector('.edit-item').addEventListener('click', function(){
-                itemInput.value = itemName;
-                itemList.removeChild(item);
+            // item.querySelector('.edit-item').addEventListener('click', function(){
+            //     itemInput.value = itemName;
+            //     itemList.removeChild(item);
 
-                todoItems = todoItems.filter(function(item){
-                    return item !== itemName;
-                   
-                });
-            });
-            // delete event listener
-            item.querySelector('.delete-item').addEventListener('click', function(){
-                
-                itemList.removeChild(item);
-                timeItems = timeItems.filter(function(item){
-                    return item !== itemName ;
-                });
-                todoItems = todoItems.filter(function(item){
-                    return item !== itemName;
-                });
+            //     todoItems = todoItems.filter(function(item){
+            //         return item !== itemName;
 
-            })
-        }
+            //     });
+            // });
+
+
+
+        // }
+
+        
     })
 }
+   
+//     console.log(items)
+//     items.forEach(function(item){
 
-const removeItem = function(item){
-    // console.log(item);
-    const removeIndex = (todoItems.indexOf(item));
-    // const removeTime = (timeItems.indexOf(item));
-    
-    // console.log(removeIndex);
+  
+//             // delete event listener
+//             item.querySelector('.delete-item').addEventListener('click', function(){
+//                 itemList.removeChild(item);
+//                 timeItems = timeItems.filter(function(item){
+//                     return item !== itemName ;
+//                 });
+//                 todoItems = todoItems.filter(function(item){
+//                     return item !== itemName;
+//                 });
 
-   todoItems.splice(removeIndex, 1);
-// timeItems.splice(removeTime, 1);
-    console.log();
-    console.log();  
-    
-}
+//             })
+//         }
+//     })
+// }
 
-const getList = function(todoItems, timeItems){
+
+
+
+// const removeItem = function (item) {
+//     // console.log(item);
+//     const removeIndex = (todoItems.indexOf(item));
+//     // const removeTime = (timeItems.indexOf(item));
+
+//     // console.log(removeIndex);
+
+//     todoItems.splice(removeIndex, 1);
+//     // timeItems.splice(removeTime, 1);
+
+
+// }
+
+
+
+
+
+
+
+
+//get data from getlocalstorage and show in client
+const getList = function (todoItems) {
     itemList.innerHTML = '';
+    todoItems.forEach(task => {
+     
+        itemList.insertAdjacentHTML('beforeend', `<div class="item my-3"><div class="right-part"><h5 class="item-name text-capitalize" style="fony-size=30px">${task.title}</h5> <h6 class="item-name text-capitalize">${task.time}</h6></div><div class="item-icons"><a href="#" class="complete-item mx-2 item-icon"><i class="far fa-check-circle"></i></a><a href="#" class="edit-item mx-2 item-icon"><i class="far fa-edit"></i></a><a href="#" class="delete-item item-icon"><i class="far fa-times-circle"></i></a></div></div>`);
+        
+    });
+
+    handleItem(todoItems)
+}
 
 
-    for (let index = 0; index < todoItems.length; index++) {
-        let task = todoItems[index]; 
-        let timess =  timeItems[index];
-        itemList.insertAdjacentHTML('beforeend', `<div class="item my-3"><div class="right-part"><h5 class="item-name text-capitalize" style="fony-size=30px">${task}</h5> <h6 class="item-name text-capitalize">${timess}</h6></div><div class="item-icons"><a href="#" class="complete-item mx-2 item-icon"><i class="far fa-check-circle"></i></a><a href="#" class="edit-item mx-2 item-icon"><i class="far fa-edit"></i></a><a href="#" class="delete-item item-icon"><i class="far fa-times-circle"></i></a></div></div>` );
-        handleItem(task);
-        handleItem(timess);
-    }
-       
-    } 
 
-const getLocalStorage = function(){
-    const timestorage = localStorage.getItem('timeItems')
-    const todoStorage = localStorage.getItem('todoItems');
-    if (todoStorage === 'undefined' || todoStorage === null ){
-        todoItems = [];
-      
+
+
+
+
+
+
+
+//get our data from local storage and send into getline function 
+
+const getLocalStorage = function () {
+    const allitems = localStorage.getItem('alltodoItems')
+
+    if (allitems === 'undefined' || allitems === null) {
+        todo = [];
+
     } else {
-        timeItems = JSON.parse(timestorage);
-        todoItems = JSON.parse(todoStorage);
-        console.log(timeItems);
-        console.log(todoItems);
-        getList(todoItems,timeItems);
-       
+        // console.log(allitems)
+        getList(JSON.parse(allitems));
+         todo = JSON.parse(allitems)
     }
 }
 
-const setLocalStorage = function(todoItems){
-    localStorage.setItem('todoItems', JSON.stringify(todoItems));
-    localStorage.setItem('timeItems',JSON.stringify(timeItems));
+
+
+
+
+
+
+// set our data in local storage 
+const setLocalStorage = function (todoItems) {
+    localStorage.setItem('alltodoItems', JSON.stringify(todoItems));
 }
 
 // get local storage from page
-getLocalStorage();
+ getLocalStorage();
+
+
+
+
+
+
+
+
+
 
 //add an item to the List, including to local storage
-form.addEventListener('submit', function(e){ 
+form.addEventListener('submit', function (e) {
     e.preventDefault();
-    const itemName = itemInput.value;
-    const itemTime1 = itemtimeeee.value;
-    if (itemName.length === 0){
+    const itemTask = itemtaskInput.value;
+    const itemTime = itemtimeinput.value;
+  
+
+
+    getLocalStorage();
+    // console.log(todo)
+    let id = todo.length > 0 ? todo[todo.length-1].taskId : 0
+    id++;
+    // when send empty input we will have a massage
+    if (itemTask.length === 0) {
         feedback.innerHTML = 'Please Enter Valid Value';
         feedback.classList.add('showItem', 'alert-danger');
         setTimeout(
-            function(){
+            function () {
                 feedback.classList.remove('showItem');
-                }, 3000);
-    } else {
-        todoItems.push(itemName);
-        timeItems.push(itemTime1);
-        setLocalStorage(todoItems,timeItems);
-        getList(todoItems,timeItems);
-        //add event listeners to icons;
-        //handleItem(itemName);
+            }, 3000);
     }
-    
-    itemInput.value = '';
-    timeItems.value = '';
-    });
 
-    //clear all items from the list
-clearButton.addEventListener('click', function(){
-    todoItems = [];
-    timeItems = [];
+    else{
+
+        todo.push(
+            {
+                title: itemTask,
+                time : itemTime,
+                taskId : id, 
+                iscm : false
+            }
+        )
+        // console.log(todo)
+        setLocalStorage(todo);
+        getList(todo)
+        //add event listeners to icons;
+    }
+
+    itemTask.value = '';
+    itemTime.value = '';
+});
+
+
+
+
+
+
+
+// clear all items from the list
+clearButton.addEventListener('click', function () {
+  todo = []
     localStorage.clear();
-    getList(todoItems,timeItems);
-    
+    getList(todo);
+
 })
 
