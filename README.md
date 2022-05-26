@@ -3,18 +3,13 @@
 
 To do Project
 
-
-## Names of contributors
-
-Ehsan , MohamadReza , Samira
 ## Brief description of the project:
 
 This is a to do project it contain singup and login page
 and another page which is belong to do it has some features
 such as filter by day, week and month. 
 ## Technologies used: 
-Html
-Css
+local storage
 Java Script
 ## Longer description of the project as needed:
 
