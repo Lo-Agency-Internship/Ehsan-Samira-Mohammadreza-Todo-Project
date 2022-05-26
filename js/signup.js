@@ -3,7 +3,6 @@ const usernameInput = document.querySelector("#username");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 const confirmPasswordInput = document.querySelector("#confirm-password");
-
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   let valid = validateForm();
@@ -17,14 +16,17 @@ form.addEventListener("submit", (event) => {
     : [];
 
   let inputs = {
-    id: Date.now(),
+    id: users.length,
     email: document.querySelector("#email").value,
     password1: document.querySelector("#password").value,
     password2: document.querySelector("#confirm-password").value,
+    loguser: false,
+    task : []
   };
   users.push(inputs);
-
   localStorage.setItem("users", JSON.stringify(users));
+  inputs.id++;
+  
 });
 
 function validateForm() {
@@ -95,3 +97,4 @@ function isEmailValid(email) {
 
   return reg.test(email);
 }
+
