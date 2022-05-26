@@ -1,4 +1,6 @@
 //add an eventListener to the from
+
+// import { users } from "signup.js";
 const form = document.querySelector('#itemForm'); // select form
 const itemtaskInput = document.querySelector('#itemInput'); // select input box from form --> task 
 const itemtimeinput = document.querySelector('#itemtime'); // select input box from form --> time 
@@ -9,6 +11,26 @@ const clearButton = document.querySelector('#clear-list');//a button that when w
 
 
 let todo = [];
+// users.push(todo)
+let users1 = localStorage.getItem('users');
+console.log(users1)
+let users2=JSON.parse(users1)
+console.log(users2)
+
+
+let users3=users2[users2[1].id]
+console.log()
+console.log(users3)
+let users4 = Object.values(users3)
+// console.log(JSON.parse(todo))
+
+
+
+localStorage.setItem('users',JSON.stringify(users2))
+// let users4 =users3.task;
+// users4 = todo
+// console
+// localStorage.setItem('users', JSON.stringify(todo));
 function handleItem(todoitemsssss) {
     const items = itemList.querySelectorAll('.item');
     // console.log(items)
@@ -126,6 +148,8 @@ form.addEventListener('submit', function (e) {
         )
         setLocalStorage(todo);
         getList(todo)
+        users4[5] = todo;
+        console.log(users4)
         //add event listeners to icons;
     }
     itemTask.value = '';
@@ -194,13 +218,6 @@ function handlweekly() {
         if (editdayitem>=1 && editdayitem<=8) {
             editdayitem  = editdayitem +31
         }
-
-        console.log(day)
-        console.log(month)
-        console.log(endday)
-        console.log(endmonth)
-        console.log(editmonthitem)
-        console.log(editdayitem)
         if (editmonthitem === month+1 || editmonthitem === endmonth + 1) {
             if (editmonthitem === endmonth + 1) {
                 if (editdayitem>31 && editdayitem<38) {
