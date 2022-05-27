@@ -13,20 +13,30 @@ const clearButton = document.querySelector('#clear-list');//a button that when w
 let todo = [];
 // users.push(todo)
 let users1 = localStorage.getItem('users');
-console.log(users1)
+// console.log(users1)
 let users2=JSON.parse(users1)
-console.log(users2)
+// console.log(users2)
+// console.log(users2.length)
 
+let log1 = localStorage.getItem('currentUser');
+let log2=JSON.parse(log1)
+let log3 =Object.values(log2)
+console.log("dsfajkdljaf")
+console.log(log2)
+console.log(log3)
+let log4 = log3[0]
+let currentID
+for (let index = 0; index < users2.length; index++) {
+    let users3 = Object.values(users2[index])
+    if (users3[1] === log4 ) {
+        currentID = Object.values(users2[index])
+        console.log("sadfasdfasdf")
+        console.log(currentID)
+    }
+}
 
-let users3=users2[users2[1].id]
-console.log()
-console.log(users3)
-let users4 = Object.values(users3)
-// console.log(JSON.parse(todo))
-
-
-
-localStorage.setItem('users',JSON.stringify(users2))
+let users4 = Object.values(users2[currentID[0]])
+console.log(users4)
 // let users4 =users3.task;
 // users4 = todo
 // console
@@ -87,7 +97,7 @@ const getList = function (todoItems) {
 }
 
 
-
+getList(currentID[5])
 
 //get our data from local storage and send into getline function 
 const getLocalStorage = function () {
@@ -109,8 +119,8 @@ const getLocalStorage = function () {
     }
 }
 
-
-
+// todo =currentID[5]
+console.log(todo)
 // set our data in local storage 
 const setLocalStorage = function (todoItems) {
     localStorage.setItem('alltodoItems', JSON.stringify(todoItems));
@@ -118,7 +128,7 @@ const setLocalStorage = function (todoItems) {
 
 // get local storage from page
 getLocalStorage();
-getList(todo)
+
 
 //add an item to the List, including to local storage
 form.addEventListener('submit', function (e) {
@@ -149,7 +159,9 @@ form.addEventListener('submit', function (e) {
         setLocalStorage(todo);
         getList(todo)
         users4[5] = todo;
-        console.log(users4)
+        users2[currentID[0]].task = todo
+        localStorage.setItem('users',JSON.stringify(users2))
+
         //add event listeners to icons;
     }
     itemTask.value = '';
@@ -161,7 +173,7 @@ form.addEventListener('submit', function (e) {
 // clear all items from the list
 clearButton.addEventListener('click', function () {
     todo = []
-    localStorage.clear();
+    localStorage.removeItem('alltodoItems');
     getList(todo);
 
 })
