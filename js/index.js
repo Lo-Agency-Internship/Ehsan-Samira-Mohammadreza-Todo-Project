@@ -42,18 +42,21 @@ function canLogin() {
 
   users.find(search);
 }
-
 function search(item) {
   let userEmail = emailInput.value.trim();
   let userPassword = passwordInput.value.trim();
   if (userEmail == item.email && userPassword == item.password1) {
-    console.log("im here");
+      let currentUserInfo = {
+      email : document.querySelector("#email").value,
+      password1 : document.querySelector("#password").value, 
+    }
+    localStorage.setItem('currentUser',JSON.stringify(currentUserInfo))
     location.replace("todo.html");
     return setSuccess(passwordInput);
+    
     return true;
   } else {
-    console.log("password wrong");
-    return setError(passwordInput, "Wrong password or email");
+      return setError(passwordInput, "Wrong password or email");
   }
 }
 
