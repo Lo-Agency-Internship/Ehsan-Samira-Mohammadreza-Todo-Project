@@ -275,7 +275,11 @@ function handlmonthly() {
     }
     getList(tododate)
 }
-
+function logout(){
+    location.replace("index.html")
+    localStorage.removeItem('currentUser')
+ 
+}
 
 
 
