@@ -49,7 +49,6 @@ function validateForm() {
   } else {
     setError(emailInput, "Provide valid email address");
   }
-
   //PASSWORD
   if (passwordInput.value.trim() == "") {
     setError(passwordInput, "Password can not be empty");

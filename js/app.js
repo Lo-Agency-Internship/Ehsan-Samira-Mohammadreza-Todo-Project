@@ -1,5 +1,13 @@
 //add an eventListener to the from
-
+window.addEventListener('load',()=>{
+    console.log(window.location);
+    if (window.location.pathname==="/todo.html") {
+        if (!localStorage.getItem('currentUser')) {
+            window.location.assign('/index.html')
+        }
+        
+    }
+})
 // import { users } from "signup.js";
 const form = document.querySelector('#itemForm'); // select form
 const itemtaskInput = document.querySelector('#itemInput'); // select input box from form --> task 
@@ -7,7 +15,7 @@ const itemtimeinput = document.querySelector('#itemtime'); // select input box f
 const itemList = document.querySelector('.item-list');
 const feedback = document.querySelector('.feedback'); // a section that has feedback massage
 const clearButton = document.querySelector('#clear-list');//a button that when we click on remove all list 
-
+const logoutButton = document.querySelector('.logout')
 
 
 let todo = [];
@@ -275,14 +283,20 @@ function handlmonthly() {
     }
     getList(tododate)
 }
-function logout(){
+// function logout(){
+//     location.replace("index.html")
+//     localStorage.removeItem('currentUser')
+ 
+// }
+
+
+logoutButton.addEventListener('e', function () {
+    e.preventDefault()
+    
     location.replace("index.html")
     localStorage.removeItem('currentUser')
- 
-}
 
-
-
+})
 
 
 
