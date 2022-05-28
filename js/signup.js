@@ -10,6 +10,11 @@ form.addEventListener("submit", (event) => {
   if (!valid) {
     return false;
   }
+  let register = canRegister() 
+  console.log(register);
+  if (!register) {
+    return false
+  }
 
   let users = localStorage.getItem("users")
     ? JSON.parse(localStorage.getItem("users"))
@@ -95,5 +100,24 @@ function isEmailValid(email) {
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
   return reg.test(email);
+}
+
+function canRegister() {
+  let users = localStorage.getItem("users")
+    ? JSON.parse(localStorage.getItem("users"))
+    : [];
+ let login =users.find(item =>
+item.email == emailInput.value.trim()
+ )
+if (login) {
+  console.log(login);
+   setError(emailInput, `An account with this email ${emailInput.value} already exists`);
+  
+}else{
+  return setSuccess(emailInput);
+  }
+
+
+
 }
 

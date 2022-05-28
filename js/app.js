@@ -290,9 +290,9 @@ function handlmonthly() {
 // }
 
 
-logoutButton.addEventListener('e', function () {
-    e.preventDefault()
+logoutButton.addEventListener('click', function (e) {
     
+    e.preventDefault()
     location.replace("index.html")
     localStorage.removeItem('currentUser')
 
