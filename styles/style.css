@@ -41,7 +41,7 @@ body {
 
 #create-account-form {
   width: 600px;
-  height: 617px;
+  height: 573px;
   padding: 15px;
   padding-top: 30px;
   background-color: #fff;
@@ -61,12 +61,11 @@ body {
 
 .title h2 {
   font-family: 'FredokaOne-Regula';
-  /* font-family: 'Poppins', sans-serif; */
   text-align: center;
 
   font-size: 30px;
   text-transform: uppercase;
-  padding-bottom: 5px;
+  padding-bottom: 20px;
 }
 
 .login-title h2 {
@@ -157,7 +156,7 @@ body {
   font-size: 30px;
   position: relative;
   left: 92px;
-  margin: 0 auto;
+  margin: 10px 0 auto;
   color: #fff;
   text-transform: uppercase;
   border: none;
@@ -195,5 +194,24 @@ body {
 }
 
 .signup a:hover {
+  opacity: 80%;
+}
+
+.login {
+  text-align: center;
+  position: relative;
+  top: 25px;
+
+}
+
+.login a {
+  font-family: 'Sen-Regular';
+  font-size: 20px;
+  text-decoration: none;
+  color: #000;
+
+}
+
+.login a:hover {
   opacity: 80%;
 }
