@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/style.css" media="only screen and (min-width: 644px)"/>
+    <link rel="stylesheet" media="only screen and (min-width: 0px) and (max-width: 373px)" href="styles/mobile.css">
+    <link rel="stylesheet" media="only screen and (min-width:374px) and (max-width: 644px)" href="styles/tablet.css">
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 
@@ -46,7 +48,7 @@
       <!-- CONFIRM PASSWORD -->
 
       <button type="submit" class="btn">Sign in</button>
-      <div class="signup">
+      <div class="login">
         <a href="signup.html">Do not have account?</a>
       </div>
     </form>

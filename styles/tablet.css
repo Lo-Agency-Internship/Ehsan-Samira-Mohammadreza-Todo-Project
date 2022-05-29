@@ -383,7 +383,7 @@ h6 {
   }
   
   #login-account-form {
-    width: 600px;
+    width: 80%;
     height: 450px;
     padding: 15px;
     padding-top: 30px;
@@ -403,12 +403,12 @@ h6 {
   
   .login-title h2 {
     font-family: 'FredokaOne-Regula';
-    /* font-family: 'Poppins', sans-serif; */
+   
     text-align: center;
   
-    font-size: 35px;
+    font-size: 33px;
     text-transform: uppercase;
-    padding-bottom: 8px;
+    padding-bottom: 30px;
   }
   
   .title {
@@ -416,7 +416,7 @@ h6 {
   }
   
   .input-group {
-    /* margin: 20px 100px; */
+   
     position: relative;
   }
   
@@ -433,6 +433,7 @@ h6 {
     display: block;
     width: 100%;
     padding: 10px;
+    
     border-radius: 17px;
     font-family: 'Sen-Regular';
     font-size: 15px;
@@ -474,7 +475,7 @@ h6 {
   }
   
   .input-group p {
-    font-size: 15px;
+    font-size: 14px;
     color: #EA384D;
     visibility: hidden;
     font-family: 'Sen-Bold';
@@ -488,7 +489,7 @@ h6 {
   .btn {
     width: 67%;
     padding: 3px;
-    font-size: 30px;
+    font-size: 27px;
     position: relative;
     left: 18%;
     margin: 10px 0 auto;
@@ -523,7 +524,7 @@ h6 {
   
   .signup a {
     font-family: 'Sen-Regular';
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: none;
     color: #000;
   
@@ -542,7 +543,7 @@ h6 {
   
   .login a {
     font-family: 'Sen-Regular';
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: none;
     color: #000;
   
