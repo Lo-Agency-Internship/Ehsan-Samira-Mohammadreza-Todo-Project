@@ -15,7 +15,7 @@ form.addEventListener("submit", (event) => {
   if (!register) {
     return false
   }
-
+location.replace("index.html")
   let users = localStorage.getItem("users")
     ? JSON.parse(localStorage.getItem("users"))
     : [];
